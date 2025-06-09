@@ -1,0 +1,16 @@
+
+.kep{
+	width: 240px;
+	height: 180px;
+}
+
+.hangszoro{
+    width: 150px;
+	height: 150px;
+}
+
+
+table, th, td{
+	border: 1px solid #000;
+	border-collapse: collapse;
+}

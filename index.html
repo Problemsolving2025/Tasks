@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>A hangszerek hangjai</title>
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/script.js"></script>
+
+	<audio id='csello' src='hangok/csello.mp3'></audio>
+    <audio id='dob' src='hangok/dob.mp3'></audio>
+    <audio id='gitar' src='hangok/gitar.mp3'></audio>
+    <audio id='hegedu' src='hangok/hegedu.mp3'></audio>
+    <audio id='trombita' src='hangok/trombita.mp3'></audio>
+    <audio id='zongora' src='hangok/zongora.mp3'></audio>
+
+</head>
+<body>
+
+
+<table align="center">
+		<tr>
+			<td>A hangszer elnevezése</td>
+			<td>A hangszer képe</td>
+			<td>A hangszer hangja</td>
+		</tr>
+		<tr>
+			<td>Cselló</td>
+			<td><a href="https://sr.wikipedia.org/sr-ec/%D0%92%D0%B8%D0%BE%D0%BB%D0%BE%D0%BD%D1%87%D0%B5%D0%BB%D0%BE" target="_blank"><img src="kepek/csello.jpg" class="kep"></a></td>
+			<td>
+				<img src="kepek/hangszoro.jpg" onmouseover="play('csello')" onmouseout="stop('csello')" class="hangszoro">
+				<br/><a href="#" onclick="mutasd('vonos')">Tudj meg többet</a>
+			</td>
+		</tr>
+		<tr>
+			<td>Dob</td>
+			<td><a href="https://sr.wikipedia.org/sr-ec/%D0%91%D1%83%D0%B1%D0%B0%D1%9A" target="_blank"><img src="kepek/dob.jpg" class="kep"></a></td>
+			<td>
+				<img src="kepek/hangszoro.jpg" onmouseover="play('dob')" onmouseout="stop('dob')" class="hangszoro">
+				<br/><a href="#" onclick="mutasd('uto')">Tudj meg többet</a>
+			</td>
+		</tr>
+		<tr>
+			<td>>Gitár</td>
+			<td><a href="https://sr.wikipedia.org/sr-ec/%D0%93%D0%B8%D1%82%D0%B0%D1%80%D0%B0" target="_blank"><img src="kepek/gitar.jpg" class="kep"></a></td>
+			<td>
+				<img src="kepek/hangszoro.jpg" onmouseover="play('gitar')" onmouseout="stop('gitar')" class="hangszoro">
+				<br/><a href="#" onclick="mutasd('pengetos')">Tudj meg többet</a>
+			</td>
+		</tr>
+		<tr>
+			<td>Hegedű</td>
+			<td><a href="https://sr.wikipedia.org/sr-ec/%D0%92%D0%B8%D0%BE%D0%BB%D0%B8%D0%BD%D0%B0" target="_blank"><img src="kepek/hegedu.jpg" class="kep"></a></td>
+			<td>
+				<img src="kepek/hangszoro.jpg" onmouseover="play('hegedu')" onmouseout="stop('hegedu')" class="hangszoro">
+				<br/><a href="#" onclick="mutasd('vonos')">Tudj meg többet</a>
+			</td>
+		</tr>
+		<tr>
+			<td>Trombita</td>
+			<td><a href="https://sr.wikipedia.org/sr-ec/%D0%A2%D1%80%D1%83%D0%B1%D0%B0" target="_blank"><img src="kepek/trombita.jpg" class="kep"></a></td>
+			<td>
+				<img src="kepek/hangszoro.jpg" onmouseover="play('trombita')" onmouseout="stop('trombita')" class="hangszoro">
+				<br/><a href="#" onclick="mutasd('fuvos')">Tudj meg többet</a>
+			</td>
+		</tr>
+		<tr>
+			<td>Zongora</td>
+			<td><a href="https://sr.wikipedia.org/sr-ec/%D0%9A%D0%BB%D0%B0%D0%B2%D0%B8%D1%80" target="_blank"><img src="kepek/zongora.jpg" class="kep"></a></td>
+			<td>
+				<img src="kepek/hangszoro.jpg" onmouseover="play('zongora')" onmouseout="stop('zongora')" class="hangszoro">
+				<br/><a href="#" onclick="mutasd('billentyus')">Tudj meg többet</a>
+			</td>
+		</tr>
+	</table>
+	
+</body>
+</html>
