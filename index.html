@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Időjárás előrejelzés</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/script.js"></script>
+</head>
+<body>
+
+
+
+	<select id="varoslista" onchange="mutasd()">
+		<option value="beograd">Beograd</option>
+		<option value="cacak">Čačak</option>
+		<option value="novi-sad">Novi Sad</option>
+		<option value="kladovo">Kladovo</option>
+		<option value="subotica">Subotica</option>
+		<option value="sabac">Šabac</option>
+		<option value="nis">Niš</option>
+		<option value="zlatibor">Zlatibor</option>
+		<option value="kragujevac">Kragujevac</option>
+		<option value="lebane">Lebane</option>
+	</select>
+
+	<br/><br/>
+
+	<iframe src="http://www.naslovi.net/vremenska-prognoza/" id="ifr">
+	</iframe>
+
+		
+	</table>
+</div>
+</body>
+</html>
