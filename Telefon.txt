@@ -1,0 +1,75 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace b17
+{
+    public class Telefon
+    {
+
+        private string id;
+
+        public string Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+        private string nev;
+
+        public string Nev
+        {
+            get { return nev; }
+            set { nev = value; }
+        }
+        private string gyarto;
+
+        public string Gyarto
+        {
+            get { return gyarto; }
+            set { gyarto = value; }
+        }
+        private string ram;
+
+        public string Ram
+        {
+            get { return ram; }
+            set { ram = value; }
+        }
+        private string proci;
+
+        public string Proci
+        {
+            get { return proci; }
+            set { proci = value; }
+        }
+        private string kamera;
+
+        public string Kamera
+        {
+            get { return kamera; }
+            set { kamera = value; }
+        }
+        private string kepernyo;
+
+        public string Kepernyo
+        {
+            get { return kepernyo; }
+            set { kepernyo = value; }
+        }
+        private string kep;
+
+        public string Kep
+        {
+            get { return kep; }
+            set { kep = value; }
+        }
+        private string ar;
+
+        public string Ar
+        {
+            get { return ar; }
+            set { ar = value; }
+        }
+    }
+}

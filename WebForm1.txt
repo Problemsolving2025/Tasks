@@ -1,0 +1,106 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.IO;
+
+namespace b17
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        List<Telefon> lista = new List<Telefon>();
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                listafeltoltes();
+            ddlfeltoltes();
+            }
+            
+        }
+
+        private void listafeltoltes()
+        {
+            try
+            {
+                string utvonal = Server.MapPath("~/webaruhaz.txt");
+                string sor;
+                using (StreamReader sr = new StreamReader(utvonal))
+                {
+                    while ((sor = sr.ReadLine()) != null)
+                    {
+
+                        Telefon a = new Telefon();
+                        a.Id = sor.Substring(0, 6).Trim();
+                        a.Nev = sor.Substring(6, 25).Trim();
+                        a.Gyarto = sor.Substring(31, 20).Trim();
+                        a.Ram = sor.Substring(51, 5).Trim();
+                        a.Proci = sor.Substring(56, 5).Trim();
+                        a.Kamera = sor.Substring(71, 10).Trim();
+                        a.Kepernyo = sor.Substring(81, 10).Trim();
+                        a.Kep = sor.Substring(91, 30).Trim();
+                        a.Ar = sor.Substring(121, 10).Trim();
+
+                        lista.Add(a);
+                    }
+                }
+                gridviewfeltoltes(lista);
+
+            }
+            catch (Exception err)
+            {
+                Response.Write(err.ToString());
+            }
+        }
+        private void gridviewfeltoltes(List<Telefon> list)
+        {
+            GridView1.DataSource = list;
+            GridView1.DataBind();
+        }
+
+        private void ddlfeltoltes()
+        {
+            listafeltoltes();
+            DropDownList1.Items.Add("");
+            DropDownList1.Items.AddRange(lista.Select(i => new ListItem(i.Nev)).Distinct().ToArray());
+            DropDownList2.Items.Add("");
+            DropDownList2.Items.AddRange(lista.Select(i => new ListItem(i.Kamera.ToString())).Distinct().ToArray());
+            DropDownList3.Items.Add("");
+            DropDownList3.Items.AddRange(lista.Select(i => new ListItem(i.Kepernyo.ToString())).Distinct().ToArray());
+            DropDownList4.Items.Add("");
+            DropDownList4.Items.AddRange(lista.Select(i => new ListItem(i.Ram.ToString())).Distinct().ToArray());
+            DropDownList6.Items.Add("");
+            DropDownList6.Items.AddRange(lista.Select(i => new ListItem(i.Proci.ToString())).Distinct().ToArray());
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            listafeltoltes();
+            List<Telefon> lista2 = lista;
+
+            if (DropDownList1.SelectedIndex > -1)
+            {
+                lista2 = lista2.FindAll(x => x.Nev.Contains(DropDownList1.SelectedItem.ToString()));
+            }
+            if (DropDownList2.SelectedIndex > -1)
+            {
+                lista2 = lista2.FindAll(x => x.Kamera.Contains(DropDownList2.SelectedItem.ToString()));
+            }
+            if (DropDownList3.SelectedIndex > -1)
+            {
+                lista2 = lista2.FindAll(x => x.Kepernyo.Contains(DropDownList3.SelectedItem.ToString()));
+            }
+            if (DropDownList4.SelectedIndex > -1)
+            {
+                lista2 = lista2.FindAll(x => x.Ram.ToString().Contains(DropDownList4.SelectedItem.ToString()));
+            }
+            if (DropDownList6.SelectedIndex > -1)
+            {
+                lista2 = lista2.FindAll(x => x.Proci.Contains(DropDownList6.SelectedItem.ToString()));
+            }
+            gridviewfeltoltes(lista2);
+        }
+        }
+    }
