@@ -1,0 +1,55 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace B9
+{
+    public class Class1
+    {
+        private string eloado;
+
+        public string Eloado
+        {
+            get { return eloado; }
+            set { eloado = value; }
+        }
+        private string album_neve;
+
+        public string Album_neve
+        {
+            get { return album_neve; }
+            set { album_neve = value; }
+        }
+        private string mufaj;
+
+        public string Mufaj
+        {
+            get { return mufaj; }
+            set { mufaj = value; }
+        }
+        private string kiadas_eve;
+
+        public string Kiadas_eve
+        {
+            get { return kiadas_eve; }
+            set { kiadas_eve = value; }
+        }
+        private string kiadohaz;
+
+        public string Kiadohaz
+        {
+            get { return kiadohaz; }
+            set { kiadohaz = value; }
+        }
+        private string boritokep;
+
+        public string Boritokep
+        {
+            get { return boritokep; }
+            set { boritokep = value; }
+        }
+
+
+    }
+}

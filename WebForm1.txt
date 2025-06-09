@@ -1,0 +1,121 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+using System.IO;
+
+namespace B9
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        List<Class1> lista = new List<Class1>();
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                DDLFeltoltes();
+                gridFeltoltes();
+
+            }
+        }
+        protected void listaFeltoltes()
+        {
+
+            try
+            {
+                lista.Clear();
+                string sor;
+                StreamReader sr = new StreamReader(Server.MapPath("~/katalogus.txt"));
+
+                while ((sor = sr.ReadLine()) != null)
+                {
+                    Class1 item = new Class1();
+                    string[] line = sor.Split('|');
+                    if (line.Length < 2)
+                    {
+                        break;
+                    }
+                    item.Eloado = line[0].Trim();
+                    item.Album_neve = line[1].Trim();
+
+
+                    item.Mufaj = line[2].Trim();
+
+
+                    item.Kiadas_eve = line[3].Trim();
+                    item.Kiadohaz = line[4].Trim();
+                    item.Boritokep = line[5].Trim();
+
+                    lista.Add(item);
+                }
+                sr.Close();
+
+            }
+            catch (Exception x)
+            {
+
+                Response.Write(x.ToString());
+            }
+
+
+
+
+        }
+        protected void DDLFeltoltes()
+        {
+
+
+            listaFeltoltes();
+            DropDownList1.Items.Add("");
+            DropDownList1.Items.AddRange(lista.Select(i => new ListItem(i.Mufaj)).Distinct().ToArray());
+            DropDownList2.Items.Add("");
+            DropDownList2.Items.AddRange(lista.Select(i => new ListItem(i.Kiadas_eve)).Distinct().ToArray());
+
+        }
+        protected void gridFeltoltes()
+        {
+
+            listaFeltoltes();
+            List<Class1> eredmeny = lista;
+
+            if (TextBox1.Text != "")
+            {
+                eredmeny = eredmeny.FindAll(i => i.Eloado.Contains(TextBox1.Text));
+
+            }
+            if (TextBox2.Text != "")
+            {
+                eredmeny = eredmeny.FindAll(i => i.Album_neve.Contains(TextBox2.Text));
+
+            }
+            
+            if (DropDownList1.SelectedIndex > 0)
+            {
+                eredmeny = eredmeny.FindAll(i => i.Mufaj.Contains(DropDownList1.SelectedValue));
+
+            }
+            if (DropDownList2.SelectedIndex > 0)
+            {
+                eredmeny = eredmeny.FindAll(i => i.Kiadas_eve.Contains(DropDownList1.SelectedValue));
+
+            }
+           
+            if (TextBox6.Text != "")
+            {
+                eredmeny = eredmeny.FindAll(i => i.Boritokep.Contains(TextBox6.Text));
+
+            }
+            GridView1.DataSource = eredmeny;
+            GridView1.DataBind();
+
+        }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            gridFeltoltes();
+        }
+    }
+}
