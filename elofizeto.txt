@@ -1,0 +1,67 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace B13
+{
+    public class elofizeto
+    {
+        private string azonosito;
+
+        public string Azonosito
+        {
+            get { return azonosito; }
+            set { azonosito = value; }
+        }
+
+       
+
+
+        private string nev;
+
+        public string Nev
+        {
+            get { return nev; }
+            set { nev = value; }
+        }
+        private string vezeteknev;
+
+        public string Vezeteknev
+        {
+            get { return vezeteknev; }
+            set { vezeteknev = value; }
+        }
+        private string cim;
+
+        public string Cim
+        {
+            get { return cim; }
+            set { cim = value; }
+        }
+        private string helyseg;
+
+        public string Helyseg
+        {
+            get { return helyseg; }
+            set { helyseg = value; }
+        }
+        private string telefonszam;
+
+        public string Telefonszam
+        {
+            get { return telefonszam; }
+            set { telefonszam = value; }
+        }
+        private string email;
+
+        public string Email
+        {
+            get { return email; }
+            set { email = value; }
+        }
+
+
+
+    }
+}

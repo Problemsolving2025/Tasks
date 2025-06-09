@@ -1,0 +1,121 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.IO;
+
+namespace B13
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        List<elofizeto> lista = new List<elofizeto>(); 
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                DDLFeltoltes(); 
+                gridFeltoltes();
+               
+            }
+            
+        }
+        protected void listaFeltoltes() {
+
+            try
+            {
+                lista.Clear();
+                string sor;
+                StreamReader sr = new StreamReader(Server.MapPath("~/nevjegyzek.txt"));
+
+                while ((sor = sr.ReadLine()) != null)
+                {
+                    elofizeto item = new elofizeto();
+                    string[] line = sor.Split('|');
+                    if (line.Length < 2)
+                    {
+                        break;
+                    }
+                    item.Azonosito = line[0].Trim();
+                    item.Nev = line[1].Trim();
+
+
+                    item.Vezeteknev = line[2].Trim();
+
+
+                    item.Cim = line[3].Trim();
+                    item.Helyseg = line[4].Trim();
+                    item.Telefonszam = line[5].Trim();
+                    item.Email = line[6].Trim();
+
+                    lista.Add(item);
+                }
+                sr.Close();
+               
+            }
+            catch (Exception x)
+            {
+
+                Response.Write(x.ToString());
+            }
+        
+        
+        
+        
+        }
+        protected void DDLFeltoltes() {
+
+
+            listaFeltoltes();
+            DropDownList1.Items.Add("");
+            DropDownList1.Items.AddRange(lista.Select(i => new ListItem(i.Helyseg)).Distinct().ToArray());
+        
+        }
+        protected void gridFeltoltes() {
+
+            listaFeltoltes();
+            List<elofizeto> eredmeny = lista;
+
+            if (TextBox1.Text != "")
+            {
+                eredmeny = eredmeny.FindAll(i => i.Nev.Contains(TextBox1.Text));
+                
+            }
+            if (TextBox2.Text != "")
+            {
+                eredmeny = eredmeny.FindAll(i => i.Vezeteknev.Contains(TextBox2.Text));
+
+            }
+            if (TextBox3.Text != "")
+            {
+                eredmeny = eredmeny.FindAll(i => i.Cim.Contains(TextBox3.Text));
+
+            }
+            if (DropDownList1.SelectedIndex > 0)
+            {
+                eredmeny = eredmeny.FindAll(i => i.Helyseg.Contains(DropDownList1.SelectedValue));
+
+            }
+            if (TextBox4.Text != "")
+            {
+                eredmeny = eredmeny.FindAll(i => i.Telefonszam.Contains(TextBox4.Text));
+
+            }
+            if (TextBox6.Text != "")
+            {
+                eredmeny = eredmeny.FindAll(i => i.Email.Contains(TextBox6.Text));
+
+            }
+            GridView1.DataSource = eredmeny;
+            GridView1.DataBind();
+        
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            gridFeltoltes();
+        }
+    }
+}
