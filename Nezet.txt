@@ -1,0 +1,47 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+using System.Xml;
+using System.Data;
+
+namespace B7
+{
+    public partial class Nezet : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack) {
+                if (Request.QueryString["login"] != null)
+                {
+                    XmlDocument doksi = new XmlDocument();
+                    doksi.Load(Server.MapPath("konyvtar.xml"));
+
+                    DataSet adatok = new DataSet();
+                    adatok.ReadXml(new XmlNodeReader(doksi));
+
+                    DataView rendezett = adatok.Tables[0].DefaultView;
+                    rendezett.Sort = "olvasott DESC";
+
+                    GridView1.DataSource = rendezett;
+                    GridView1.DataBind();
+
+
+                    //be van jelentkezve
+
+                }
+                else {
+                    Response.Write("<h1>Az oldal megtekintesehez be kell jelentkezni</h1>");
+                //nincs
+                }
+
+
+            }
+
+
+        }
+    }
+}
