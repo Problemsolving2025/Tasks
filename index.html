@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/script.js"></script>
+</head>
+<body >
+    <div align="center">
+         <nav>
+             <h1>Időjárás előrejelzés Szerbiában</h1>
+        <a href="index.html">Kezdőoldal</a>
+        <a href="szerzo.html">A szerzőről</a>
+        <a href="utmutato.html">Használati útmutató</a>
+            </nav>
+       <select id="varos" onchange="mutasd()">
+            <option value="beograd">Belgrád</option>
+            <option value="nis">Nis</option>
+            <option value="subotica">Subotica</option>
+            <option value="novi-sad">Újvidék</option>
+            <option value="cacak">Čačak</option>
+            <option value="zlatibor">Zlatibor</option>
+            <option value="kragujevac">Kragujevac</option>
+            <option value="lebane">Lebane</option>
+            <option value="sabac">Šabac</option>
+            <option value="kladovo">Kladovo</option>
+        </select>
+    <br><br>
+    <iframe src="https://naslovi.net/vremenska-prognoza/" id="ifr"></iframe>
+     <div id="leiras" ></div>
+</div>
+</body>
+</html>

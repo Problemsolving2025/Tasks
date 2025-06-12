@@ -1,0 +1,9 @@
+#ifr{
+    width: 600px;
+    height: 600px;
+}
+body{
+	background-image: url(../images/bg.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
