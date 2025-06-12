@@ -46,3 +46,33 @@ namespace B6
         }
     }
 }
+
+/**********************************************/ En megoldasom, ugy, ahogy a Doraval csinaltuk a chartot
+ protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                sikerKiolvasas();
+
+                Chart1.Series.Clear();
+                Chart1.Series.Add("adatok");
+                Chart1.Series["adatok"].ChartType = System.Web.UI.DataVisualization.Charting.SeriesChartType.Column;
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT  [Osztaly],[AtlagJegy] FROM [Iskola].[dbo].[Siker]", con);
+
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        Chart1.Series["adatok"].Points.AddXY(dr[0], dr[1]);
+                    }
+                }
+
+                
+                con.Close();
+
+
+            }
+        }
