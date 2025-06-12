@@ -20,27 +20,19 @@ namespace B7
             string jelszo = TextBox2.Text;
 
             if(fnev == "Test" && jelszo  == "test123"){
-                ScriptManager.RegisterStartupScript(this, this.GetType(),
-    "alert",
-    "alert('User details saved sucessfully');window.location ='Nezet.aspx?login=true';",
-    true);
-            //sikeres
+                
+
+  Response.Write("<script>alert('Sikeres'); window.location='WebForm2.aspx?login=true';</script>");
             }
             else if (fnev == "Test2" && jelszo == "test2123")
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(),
-    "alert",
-    "alert('User details saved sucessfully');window.location ='Nezet.aspx?login=true';",
-    true);
-                //sikeres
+               
+
+  Response.Write("<script>alert('Sikeres'); window.location='WebForm2.aspx?login=true';</script>");
+
             }
             else {
-
-                ScriptManager.RegisterStartupScript(this, this.GetType(),
-        "alert",
-        "alert('Sikertelen');window.location ='Kezdooldal.aspx';",
-        true);
-            //sikertelen
+ Response.Write("<script>alert('Sikertelen'); window.location='Kezdooldal.aspx';</script>");
             }
         }
     }
